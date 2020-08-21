@@ -1,6 +1,16 @@
 {
-  "name": "my-dream-app",
+  "name": "angular-lab",
   "version": "0.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ufateh/AngularLab.git"
+  },
+  "author": "Fateh Ullah",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ufateh/AngularLab/issues"
+  },
+  "homepage": "https://github.com/ufateh/AngularLab#readme",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

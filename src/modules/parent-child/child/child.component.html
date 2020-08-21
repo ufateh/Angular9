@@ -1,0 +1,10 @@
+<!-- <input type="number" size="2" name="ageFilter" id="a-c-b1" (keyup)="onKeyUp($event)"> -->
+<input type="number" size="2" name="newAgeFilter" id="a-c-b2" #filterRef (keyup)="0">
+<div *ngFor="let person of demographics">
+  <ul *ngIf="person.age > filterRef.value">
+    <li>
+      <b>{{person.name}}</b> -- <i> is detected</i>
+      <button (click)="onRemove.emit(person.name)">Remove</button>
+    </li>
+  </ul>
+</div>

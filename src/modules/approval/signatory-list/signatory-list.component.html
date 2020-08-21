@@ -1,0 +1,11 @@
+<div class="sig-list">
+  <div *ngFor="let sig of signatoryList">
+    <app-signatory 
+    [signatory]="sig" 
+    loggedInUserId="ali"
+    [isWorkflowOwnerLoggedIn]=true
+    [isApprovalInitiatorLoggedIn]=true
+    >
+    </app-signatory>
+  </div>
+</div>

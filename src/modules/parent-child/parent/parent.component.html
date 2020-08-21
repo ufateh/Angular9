@@ -1,0 +1,8 @@
+<div *ngFor="let mate of flatmates">
+    <b>{{mate.name}}</b>
+  </div>
+  
+  <p>This person have the responsibility to show me the names of all flatmates</p>
+  <br>
+  
+  <app-child [demographics]="flatmates" (onRemove)="removeItem($event)"></app-child>
