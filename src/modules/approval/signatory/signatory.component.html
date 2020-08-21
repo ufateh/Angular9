@@ -4,7 +4,7 @@
   <p>{{signatory.email}}</p>
   <p>{{signatory.status}}</p>
   <p>{{signatory.comment}}</p>
-  <p>{{signatory.commentDate}}</p>
+  <p>{{signatory.commentDate | date}}</p>
   <button (onClick)="onAccept.emit(signatory)">Accept</button>
   <button (onClick)="onReject.emit(signatory)">Reject</button>
   <button *ngIf="isApprovalInitiatorLoggedIn && loggedInUserId !=signatory.id" (onClick)="resendEmail.emit(signatory)">Send Reminder</button>
