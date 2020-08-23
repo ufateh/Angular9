@@ -16,11 +16,14 @@ export class SignatoryComponent implements OnInit {
   @Input() loggedInUserId: string;
   @Input() isWorkflowOwnerLoggedIn: boolean;
   @Input() isApprovalInitiatorLoggedIn: boolean;
-
+  
+  // icons
+  sigIconString : string;
 
   constructor() { }
 
   ngOnInit() {
+    //ThemeIcons.circle_outline,ThemeIcons.circle_filled;
     this.onAccept = new EventEmitter();
     this.onReject = new EventEmitter();
     this.resendEmail = new EventEmitter();

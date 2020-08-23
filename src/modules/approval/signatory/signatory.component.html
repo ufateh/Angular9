@@ -3,6 +3,7 @@
   <p>{{signatory.name}}</p>
   <p>{{signatory.email}}</p>
   <p>{{signatory.status}}</p>
+  <p>{{sigIconString}}</p>
   <p>{{signatory.comment}}</p>
   <p>{{signatory.commentDate | date}}</p>
   <button (onClick)="onAccept.emit(signatory)">Accept</button>

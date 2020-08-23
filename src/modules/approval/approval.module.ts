@@ -14,7 +14,8 @@ import { SignatoryDataService } from './signatory-data.service';
     SignatoryListComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FontAwesomeModule
   ],
   providers: [
     SignatoryDataService
