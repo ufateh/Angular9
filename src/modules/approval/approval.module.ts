@@ -4,6 +4,9 @@ import { CommonModule } from '@angular/common';
 import { SignatoryComponent } from './signatory/signatory.component';
 import { SignatoryListComponent } from './signatory-list/signatory-list.component';
 import { SignatoryDataService } from './signatory-data.service';
+import {FontAwesomeModule,FaIconLibrary} from '@fortawesome/angular-fontawesome';
+
+import { faCircle } from '@fortawesome/free-solid-svg-icons';
 
 @NgModule({
   declarations: [
@@ -21,4 +24,9 @@ import { SignatoryDataService } from './signatory-data.service';
     SignatoryDataService
   ]
 })
-export class ApprovalModule { }
+export class ApprovalModule { 
+  constructor(library: FaIconLibrary) {
+    // Add an icon to the library for convenient access in other components
+    library.addIcons(faCircle);
+  }
+}

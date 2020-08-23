@@ -2,11 +2,16 @@
   <p>{{signatory.id}}</p>
   <p>{{signatory.name}}</p>
   <p>{{signatory.email}}</p>
-  <p>{{signatory.status}}</p>
-  <p>{{sigIconString}}</p>
+  <fa-icon *ngIf="signatory.status == 3" icon="circle" [styles]="{'color':'red'}"></fa-icon>
+  <fa-icon *ngIf="signatory.status == 2" icon="circle" [styles]="{'color':'green'}"></fa-icon>
+  <fa-icon *ngIf="signatory.status == 1" icon="circle" [styles]="{'color':'orange'}"></fa-icon>
+  <fa-icon *ngIf="signatory.status == 0" icon="circle" [styles]="{'color':'grey'}"></fa-icon>
   <p>{{signatory.comment}}</p>
   <p>{{signatory.commentDate | date}}</p>
-  <button (onClick)="onAccept.emit(signatory)">Accept</button>
-  <button (onClick)="onReject.emit(signatory)">Reject</button>
-  <button *ngIf="isApprovalInitiatorLoggedIn && loggedInUserId !=signatory.id" (onClick)="resendEmail.emit(signatory)">Send Reminder</button>
+  <div *ngIf="signatory.status == 1">
+    <button (onClick)="onAccept.emit(signatory)">Accept</button>
+    <button (onClick)="onReject.emit(signatory)">Reject</button>
+    <button *ngIf="isApprovalInitiatorLoggedIn && loggedInUserId !=signatory.id"
+      (onClick)="resendEmail.emit(signatory)">Send Reminder</button>
+  </div>
 </div>

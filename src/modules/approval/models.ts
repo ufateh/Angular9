@@ -8,8 +8,8 @@ export interface Signatory {
 }
 
 export enum ApprovalStatus {
-    Approved,
-    Rejected,
-    Pending,
-    Inactive
+    Inactive = 0,
+    Pending = 1,
+    Approved = 2,
+    Rejected = 3,
 }
