@@ -17,7 +17,7 @@ export class SignatoryDataService {
         name: generator.name(),
         comment: generator.sentence({ words: 5 }),
         commentDate: generator.date(),
-        status: generator.integer({ min: 0, max: 2 })
+        status: generator.integer({ min: 0, max: 3 })
       }
       sigList.push(sig);
     }

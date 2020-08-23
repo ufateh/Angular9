@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Signatory } from '../models';
+import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 
 @Component({
   selector: 'app-signatory',
@@ -17,8 +19,7 @@ export class SignatoryComponent implements OnInit {
   @Input() isWorkflowOwnerLoggedIn: boolean;
   @Input() isApprovalInitiatorLoggedIn: boolean;
 
-
-  constructor() { }
+  constructor(private iconLibrary:FaIconLibrary) { }
 
   ngOnInit() {
     this.onAccept = new EventEmitter();
