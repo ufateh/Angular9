@@ -1,0 +1,9 @@
+<h1>Dynamic Component</h1>
+<optgroup label="Select Component" *ngIf="[components.length>0]">
+    <option *ngFor="let item of components;index as i" value="i" (click)="selectView(i)">{{item.config.name}}</option>
+</optgroup>
+
+<select name="dCSelector" id="dCSelector" *ngIf="components.length>0" (change)="selectView($event.target.selectedIndex)">
+    <option *ngFor="let item of components;index as i" value="i">{{item.config.name}}</option>
+</select>
+<ng-template appAncor></ng-template>
