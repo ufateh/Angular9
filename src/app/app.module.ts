@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 // import { ParentChildModule } from '../modules/parent-child/parent-child.module';
-// import { ApprovalModule } from '../modules/approval/approval.module';
+import { ApprovalModule } from '../modules/approval/approval.module';
 import { DynamicComponentsModule } from '../modules/dynamic-components/dynamic-components.module';
 import { ComponentServiceService } from 'src/modules/dynamic-components/component-service.service';
 //import { SampleComponentsModule } from '../modules/dynamic-components/sample-components/sample-components.module';
@@ -17,7 +17,7 @@ import { ComponentServiceService } from 'src/modules/dynamic-components/componen
     BrowserModule,
     AppRoutingModule,
     //ParentChildModule,
-    //ApprovalModule,
+    ApprovalModule,
     DynamicComponentsModule
   ],
   providers: [ComponentServiceService],
