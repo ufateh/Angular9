@@ -1,0 +1,26 @@
+<form [formGroup]="paymentForm" (ngSubmit)="onSubmit()">
+
+    <label>
+        Credit card number
+        <input type="text" formControlName="creditCardNumber">
+    </label>
+
+    <label>
+        Card holder
+        <input type="text" formControlName="cardHolder">
+    </label>
+    <label>
+        Expiration date
+        <input type="date" formControlName="expirtionDate">
+    </label>
+    <label>
+        Security code
+        <input type="number" formControlName="securityCode">
+    </label>
+    <label>
+        Amount
+        <input type="number" formControlName="amount">
+    </label>
+
+    <button type="submit" [disabled]="!paymentForm.valid">Submit</button>
+</form>

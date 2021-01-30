@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {HttpClientModule} from '@angular/common/http'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -7,6 +8,8 @@ import { AppComponent } from './app.component';
 import { ApprovalModule } from '../modules/approval/approval.module';
 import { DynamicComponentsModule } from '../modules/dynamic-components/dynamic-components.module';
 import { ComponentServiceService } from 'src/modules/dynamic-components/component-service.service';
+import { PaymentModule } from 'src/modules/payment/payment.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 //import { SampleComponentsModule } from '../modules/dynamic-components/sample-components/sample-components.module';
 
 @NgModule({
@@ -18,7 +21,13 @@ import { ComponentServiceService } from 'src/modules/dynamic-components/componen
     AppRoutingModule,
     //ParentChildModule,
     ApprovalModule,
-    DynamicComponentsModule
+    DynamicComponentsModule,
+
+    HttpClientModule,
+    // it was needed to include these below two modules in app module and in the payment module. Only then reactive form is recognized by angular
+    FormsModule,
+    ReactiveFormsModule,
+    PaymentModule
   ],
   providers: [ComponentServiceService],
   bootstrap: [AppComponent]
