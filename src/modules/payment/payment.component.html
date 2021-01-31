@@ -2,7 +2,7 @@
 
     <label>
         Credit card number
-        <input type="text" placeholder="1111111111111111" formControlName="creditCardNumber">
+        <input type="text" placeholder="Enter 16-digit card number" formControlName="creditCardNumber">
 
         <div *ngIf="paymentForm.get('creditCardNumber').invalid && 
         paymentForm.get('creditCardNumber').errors && 
@@ -26,14 +26,17 @@
 
     <label>
         Card holder
-        <input type="text" placeholder="SHAHBAZ KHAN" oninput="this.value = this.value.toUpperCase()"
+        <input type="text" placeholder="Enter name" oninput="this.value = this.value.toUpperCase()" pattern="[a-zA-Z ]*"
             formControlName="cardHolder">
 
         <div *ngIf="paymentForm.get('cardHolder').invalid && 
-        paymentForm.get('cardHolder').errors && 
+        paymentForm.get('cardHolder').errors &&
         (paymentForm.get('cardHolder').dirty || paymentForm.get('cardHolder').touched)">
             <small class="text-danger" *ngIf="paymentForm.get('cardHolder').hasError('required')">
                 This field is required.
+            </small>
+            <small class="text-danger" *ngIf="paymentForm.get('cardHolder').errors.pattern">
+                Only alphabets are allowed!
             </small>
         </div>
     </label>
@@ -53,7 +56,7 @@
     </label>
     <label>
         Security code
-        <input type="string" placeholder="326" formControlName="securityCode">
+        <input type="string" formControlName="securityCode">
         <div *ngIf="paymentForm.get('securityCode').invalid && 
         paymentForm.get('securityCode').errors && 
         (paymentForm.get('securityCode').dirty || paymentForm.get('securityCode').touched)">
@@ -72,7 +75,7 @@
     </label>
     <label>
         Amount
-        <input type="number" placeholder="56777" formControlName="amount">
+        <input type="number" formControlName="amount">
         <div *ngIf="paymentForm.get('amount').invalid && 
         paymentForm.get('amount').errors && 
         (paymentForm.get('amount').dirty || paymentForm.get('amount').touched)">
@@ -88,5 +91,5 @@
     <button type="submit" [disabled]="!paymentForm.valid">Submit</button>
 </form>
 
-<p *ngIf="paymentForm.valid">{{paymentForm.value | json}}</p>
-<p>{{result}}</p>
+<p *ngIf="paymentForm.valid" style="color: gray;">{{paymentForm.value | json}}</p>
+<p style="color: green;">{{result}}</p>

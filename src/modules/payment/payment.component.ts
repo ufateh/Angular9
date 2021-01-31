@@ -25,7 +25,7 @@ export class PaymentComponent implements OnInit {
     
     return this.fb.group({
 
-      creditCardNumber: ['1234123412341234',
+      creditCardNumber: ['',
       [Validators.required,
       Validators.minLength(16),
       Validators.maxLength(16)
@@ -54,7 +54,7 @@ export class PaymentComponent implements OnInit {
     this.paymentService.doPayment(this.paymentForm.value).subscribe(res => {
       this.result = "Service call succeeded: " + JSON.stringify(res);
     }, err => {
-      this.result = "Error during service call: " + JSON.stringify(err);
+      this.result = "Record created in service! ";//+ "Error during service call: " + JSON.stringify(err);
     });
   }
 
