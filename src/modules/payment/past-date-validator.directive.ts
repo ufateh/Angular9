@@ -3,12 +3,18 @@
  */
 
 import { AbstractControl, ValidatorFn } from "@angular/forms";
+import * as moment from "moment";
 
 export function PastDateValidator(): ValidatorFn {
   return (control: AbstractControl): { [key: string]: any } | null => {
-    
-    const valid = control.value.getTime() > new Date().getTime();
-    
-    return valid ? { invalid: { value: control.value } } : null;
+
+    if(control.value){
+      const date = moment(control.value);
+      const today = moment();
+      if(date.isBefore(today)){
+        return {invalid :true};
+      }
+    }
+    return null;
   }
 }

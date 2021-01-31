@@ -1,26 +1,92 @@
-<form [formGroup]="paymentForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="paymentForm" (ngSubmit)="onSubmit()" class="card-item">
 
     <label>
         Credit card number
-        <input type="text" formControlName="creditCardNumber">
+        <input type="text" placeholder="1111111111111111" formControlName="creditCardNumber">
+
+        <div *ngIf="paymentForm.get('creditCardNumber').invalid && 
+        paymentForm.get('creditCardNumber').errors && 
+        (paymentForm.get('creditCardNumber').dirty || paymentForm.get('creditCardNumber').touched)">
+            <small class="text-danger" *ngIf="paymentForm.get('creditCardNumber').hasError('required')">
+                This field is required.
+            </small>
+            <small class="text-danger" *ngIf="paymentForm.get('creditCardNumber').hasError('minlength')">
+                The minimum length for this field is
+                {{paymentForm.get('creditCardNumber').errors.minlength.requiredLength}}
+                characters.
+            </small>
+            <small class="text-danger" *ngIf="paymentForm.get('creditCardNumber').hasError('maxlength')">
+                The maximum length for this field is
+                {{paymentForm.get('creditCardNumber').errors.maxlength.requiredLength}}
+                characters.
+            </small>
+        </div>
+
     </label>
 
     <label>
         Card holder
-        <input type="text" formControlName="cardHolder">
+        <input type="text" placeholder="SHAHBAZ KHAN" oninput="this.value = this.value.toUpperCase()"
+            formControlName="cardHolder">
+
+        <div *ngIf="paymentForm.get('cardHolder').invalid && 
+        paymentForm.get('cardHolder').errors && 
+        (paymentForm.get('cardHolder').dirty || paymentForm.get('cardHolder').touched)">
+            <small class="text-danger" *ngIf="paymentForm.get('cardHolder').hasError('required')">
+                This field is required.
+            </small>
+        </div>
     </label>
     <label>
         Expiration date
         <input type="date" formControlName="expirtionDate">
+        <div *ngIf="paymentForm.get('expirtionDate').invalid && 
+        paymentForm.get('expirtionDate').errors && 
+        (paymentForm.get('expirtionDate').dirty || paymentForm.get('expirtionDate').touched)">
+            <small class="text-danger" *ngIf="paymentForm.get('expirtionDate').hasError('required')">
+                This field is required.
+            </small>
+            <small class="text-danger" *ngIf="paymentForm.get('expirtionDate').hasError('invalid')">
+                Expiry date should not be today or in the past.
+            </small>
+        </div>
     </label>
     <label>
         Security code
-        <input type="number" formControlName="securityCode">
+        <input type="string" placeholder="326" formControlName="securityCode">
+        <div *ngIf="paymentForm.get('securityCode').invalid && 
+        paymentForm.get('securityCode').errors && 
+        (paymentForm.get('securityCode').dirty || paymentForm.get('securityCode').touched)">
+
+            <small class="text-danger" *ngIf="paymentForm.get('securityCode').hasError('minlength')">
+                The required minimum length for this field is
+                {{paymentForm.get('securityCode').errors.minlength.requiredLength}}
+                digits.
+            </small>
+            <small class="text-danger" *ngIf="paymentForm.get('securityCode').hasError('maxlength')">
+                The required maximum length for this field is
+                {{paymentForm.get('securityCode').errors.maxlength.requiredLength}}
+                digits.
+            </small>
+        </div>
     </label>
     <label>
         Amount
-        <input type="number" formControlName="amount">
+        <input type="number" placeholder="56777" formControlName="amount">
+        <div *ngIf="paymentForm.get('amount').invalid && 
+        paymentForm.get('amount').errors && 
+        (paymentForm.get('amount').dirty || paymentForm.get('amount').touched)">
+            <small class="text-danger" *ngIf="paymentForm.get('amount').hasError('required')">
+                This field is required.
+            </small>
+            <small class="text-danger" *ngIf="paymentForm.get('amount').hasError('min')">
+                Must be greater than {{paymentForm.get('amount').errors.min.min}}.
+            </small>
+        </div>
     </label>
 
     <button type="submit" [disabled]="!paymentForm.valid">Submit</button>
 </form>
+
+<p *ngIf="paymentForm.valid">{{paymentForm.value | json}}</p>
+<p>{{result}}</p>

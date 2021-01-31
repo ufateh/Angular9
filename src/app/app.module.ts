@@ -22,10 +22,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     //ParentChildModule,
     ApprovalModule,
     DynamicComponentsModule,
-
     HttpClientModule,
-    // it was needed to include these below two modules in app module and in the payment module. Only then reactive form is recognized by angular
-    FormsModule,
     ReactiveFormsModule,
     PaymentModule
   ],

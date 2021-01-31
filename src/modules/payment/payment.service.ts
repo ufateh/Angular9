@@ -1,21 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Payment } from './payment';
+import { Observable } from 'rxjs/internal/Observable';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PaymentService {
 
-  private paymentUrl: '/api/makePayment';
-  
+  private paymentUrl: string = '/api/makePayment';
+
   constructor(private http: HttpClient) { }
 
-  doPayment(dto: Payment) {
-    this.http.post(this.paymentUrl, dto).subscribe(res => {
-      return res;
-    }, err => {
-      return err;
-    })
+  doPayment(dto: Payment) : Observable<any> {
+    return this.http.post(this.paymentUrl, dto);
   }
 }

@@ -1,17 +1,21 @@
+import { templateJitUrl } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PastDateValidator } from './past-date-validator.directive';
+import { PaymentService } from './payment.service';
 
 @Component({
   selector: 'app-payment',
   templateUrl: './payment.component.html',
-  styleUrls: ['./payment.component.sass']
+  styleUrls: ['./payment.component.sass'],
+  providers : [PaymentService]
 })
 export class PaymentComponent implements OnInit {
 
   paymentForm: FormGroup = this._initPaymentFormGroup();
+  result : any;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder,private paymentService : PaymentService) {
   }
 
   ngOnInit(): void {
@@ -21,7 +25,7 @@ export class PaymentComponent implements OnInit {
     
     return this.fb.group({
 
-      creditCardNumber: ['',
+      creditCardNumber: ['1234123412341234',
       [Validators.required,
       Validators.minLength(16),
       Validators.maxLength(16)
@@ -34,11 +38,11 @@ export class PaymentComponent implements OnInit {
       //custom validator
       PastDateValidator()
       ]],
-      securityCode: [null,
+      securityCode: [,
       [Validators.minLength(3),
       Validators.maxLength(3)
       ]],
-      amount: [0,
+      amount: [,
       [Validators.required,
       Validators.min(1)
       ]]
@@ -47,6 +51,11 @@ export class PaymentComponent implements OnInit {
 
   onSubmit() {
     console.warn(this.paymentForm.value);
+    this.paymentService.doPayment(this.paymentForm.value).subscribe(res => {
+      this.result = "Service call succeeded: " + JSON.stringify(res);
+    }, err => {
+      this.result = "Error during service call: " + JSON.stringify(err);
+    });
   }
 
 }
