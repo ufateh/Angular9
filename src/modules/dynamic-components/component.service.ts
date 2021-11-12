@@ -8,7 +8,7 @@ import { ElephantComponent } from './sample-components/elephant/elephant.compone
 @Injectable({
   providedIn: 'root'
 })
-export class ComponentServiceService {
+export class ComponentService {
 
   constructor() { }
 

@@ -2,7 +2,6 @@ import { Component, ComponentFactoryResolver, Input, OnInit, ViewChild } from '@
 import { AncorDirective } from '../ancor.directive';
 import { DynamicComponent } from '../dynamic-component';
 import { DynamicComponentInfo } from '../dynamic-component-info';
-import { ComponentServiceService } from '../component-service.service';
 
 @Component({
   selector: 'app-placeholder',

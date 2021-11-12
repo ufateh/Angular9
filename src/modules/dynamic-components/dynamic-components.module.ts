@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AncorDirective } from './ancor.directive';
 import { PlaceholderComponent } from './placeholder/placeholder.component';
-import { ComponentServiceService } from './component-service.service';
+import { ComponentService } from './component.service';
 
 
 
@@ -14,6 +14,6 @@ import { ComponentServiceService } from './component-service.service';
   exports: [
     PlaceholderComponent
   ],
-  providers: [ComponentServiceService],
+  providers: [ComponentService],
 })
 export class DynamicComponentsModule { }
